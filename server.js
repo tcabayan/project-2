@@ -4,10 +4,11 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const morgan = require('morgan')
 
-const app = express()
 const PORT = process.env.PORT || 3000
 
-app.use(express.urlencoded())
+const app = express()
+
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(express.static('public'))
 
