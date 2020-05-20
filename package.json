@@ -4,7 +4,7 @@
   "description": "Full Stack Flex Project 2",
   "main": "server.js",
   "scripts": {
-    "lint": "eslint **/*.js --quiet",
+    "lint": "eslint --quiet",
     "start": "node server.js",
     "test": "npm run lint",
     "watch": "nodemon server.js"
