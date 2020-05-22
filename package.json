@@ -21,6 +21,7 @@
   "homepage": "https://github.com/icn2you/fsf-p02#readme",
   "devDependencies": {
     "eslint": "^7.0.0",
+    "eslint-config-semistandard": "^15.0.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
@@ -34,6 +35,7 @@
     "express-handlebars": "^4.0.4",
     "morgan": "^1.10.0",
     "mysql2": "^2.1.0",
-    "sequelize": "^5.21.10"
+    "sequelize": "^5.21.10",
+    "sequelize-cli": "^5.5.1"
   }
 }

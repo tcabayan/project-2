@@ -1,22 +1,22 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const express = require('express')
-const exphbs = require('express-handlebars')
-const morgan = require('morgan')
+const express = require('express');
+const exphbs = require('express-handlebars');
+const morgan = require('morgan');
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 
-const app = express()
+const app = express();
 
-app.use(express.urlencoded({ extended: false }))
-app.use(express.json())
-app.use(express.static('public'))
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.static('public'));
 
 if (process.env.NODE_ENV !== 'production') {
-  app.use(morgan('dev'))
+  app.use(morgan('dev'));
 }
 
-app.engine('handlebars', exphbs())
-app.set('view engine', 'handlebars')
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
 
-app.listen(PORT, () => console.log(`App listening on port ${PORT} ...`))
+app.listen(PORT, () => console.log(`App listening on port ${PORT} ...`));

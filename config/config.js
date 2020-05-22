@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
   development: {
@@ -13,4 +13,4 @@ module.exports = {
     url: process.env.JAWSDB_URL,
     dialect: 'mysql'
   }
-}
+};
