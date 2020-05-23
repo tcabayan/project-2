@@ -1,4 +1,5 @@
 const isAuthenticated = require('../config/middleware/isAuthenticated');
+const path = require('path');
 
 module.exports = function (app) {
   app.get('/', function (req, res) {
