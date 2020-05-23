@@ -17,6 +17,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 app.use(routes);
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+// code below is to render the rss-parser podcasts page
+// app.engine('handlebars', exphbs({ defaultLayout: 'main2' }));
 app.set('view engine', 'handlebars');
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT} ...`));
