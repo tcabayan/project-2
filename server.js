@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 app.use(routes);
-app.engine('handlebars', exphbs({defaultLayout:"main"}));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT} ...`));
