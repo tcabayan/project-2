@@ -19,4 +19,6 @@ if (process.env.NODE_ENV !== 'production') {
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+app.use(require('./routes/ui'));
+
 app.listen(PORT, () => console.log(`App listening on port ${PORT} ...`));
