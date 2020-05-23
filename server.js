@@ -21,4 +21,6 @@ app.use(routes);
 app.engine('handlebars', exphbs({ defaultLayout: 'main2' }));
 app.set('view engine', 'handlebars');
 
+app.use(require('./routes/ui'));
+
 app.listen(PORT, () => console.log(`App listening on port ${PORT} ...`));
