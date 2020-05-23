@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const exphbs = require('express-handlebars');
 const morgan = require('morgan');
-// const passport = require('./config/passport');
 
 const PORT = process.env.PORT || 3000;
 
