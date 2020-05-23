@@ -1,0 +1,43 @@
+<mxfile host="localhost" modified="2020-05-22T03:14:27.386Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.45.1 Chrome/78.0.3904.130 Electron/7.2.4 Safari/537.36" etag="69Qh9bK7O4DfPY5O3Eje" version="13.0.9">
+    <diagram id="6hGFLwfOUW9BJ-s0fimq" name="Page-1">
+        <mxGraphModel dx="1164" dy="883" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="12" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="460" width="780" height="780" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;font color=&quot;#ffffff&quot;&gt;MOST RECENT EPISODES&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="540" width="416" height="290" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;span style=&quot;background-color: rgb(255 , 255 , 255) ; font-size: 18px&quot;&gt;SIGN IN WITH GITHUB&lt;br&gt;CLICK HERE TO SIGN UP FOR GITHUB&lt;br&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="270" y="120" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&lt;span style=&quot;color: rgb(255 , 255 , 255)&quot;&gt;RECENTLY UPDATED SUBSCRIPTIONS&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="217" y="880" width="416" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="&lt;font color=&quot;#ffffff&quot;&gt;ADD PODCAST TO SUBSCRIBE TO (TEXT INPUT)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="1070" width="400" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="&lt;font color=&quot;#ffffff&quot;&gt;ADD BUTTON&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="1070" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="rounded=1;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="670" y="120" width="760" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="HOME" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="1190" y="170" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="WELCOME USER TO LISTEN, HEAR!" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="170" width="280" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="NAV BAR" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="70" width="290" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="LISTEN, HEAR!" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="160" width="100" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
