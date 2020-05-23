@@ -7,6 +7,12 @@ router.get('/feed', async (req, res) => {
   // res.json(feed)
   const parsedFeed = feed.items.splice(0, 20).map(a => { a.pubDate = a.pubDate.split('+')[0]; return a; });
   res.render('index2', parsedFeed);
+  console.log(feed.title);
+
+  feed.items.forEach(item => {
+    console.log(item.title + ':' + item.link);
+    console.log(item.contentSnippet);
+  });
 });
 
 module.exports = router;
