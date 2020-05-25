@@ -16,8 +16,8 @@ router.get('/feed', async (req, res) => {
   });
 });
 
-router.post("/addpod", (req,res)=>{
+router.post('/addpod', (req, res) => {
   db.Podcast.create(req.body);
-})
+});
 
 module.exports = router;
