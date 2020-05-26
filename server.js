@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 // code below is to render the rss-parser podcasts page
-app.engine('handlebars', exphbs({ defaultLayout: 'main2' }));
+// app.engine('handlebars', exphbs({ defaultLayout: 'main2' }));
 app.set('view engine', 'handlebars');
 app.use(routes);
 // need session to keep track of user's login status
