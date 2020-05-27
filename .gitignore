@@ -106,3 +106,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Zip archives
+*.zip
+
+# Mac OS files
+.DS_Store
+
+# Sandbox files
+*.sandbox

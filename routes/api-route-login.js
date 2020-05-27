@@ -1,10 +1,9 @@
-// note in order to use GitHub to authenticate in your Node.js app you need to install: npm install passport-github
+// note in order to use GitHub to authenticate in your Node.js router you need to install: npm install passport-github
 
-const express = require('express');
-const app = express();
+const router = require('express').Router();
 const passport = require('passport');
 
-app.post('/login',
+router.post('/login',
   passport.authenticate('local'),
   function (req, res) {
   // If this function gets called, authentication was successful.
@@ -13,14 +12,14 @@ app.post('/login',
   });
 
 // need to redirect to homepage after login is confirmed
-app.post('/login',
+router.post('/login',
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login'
   }));
 
 // flash messages are combined with redirects in order to display status info to user
-app.post('/login',
+router.post('/login',
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
@@ -35,7 +34,7 @@ passport.authenticate('local', { failureFlash: 'Invalid username or password.' }
 passport.authenticate('local', { successFlash: 'Welcome!' });
 
 // custom Callback (probably don't need)
-app.get('/login', function (req, res, next) {
+router.get('/login', function (req, res, next) {
   passport.authenticate('local', function (err, user, info) {
     if (err) { return next(err); }
     if (!user) { return res.redirect('/login'); }
@@ -45,3 +44,5 @@ app.get('/login', function (req, res, next) {
     });
   })(req, res, next);
 });
+
+module.exports = router;

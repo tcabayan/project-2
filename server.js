@@ -15,21 +15,15 @@ app.use(express.static('public'));
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
-app.use(routes);
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 // code below is to render the rss-parser podcasts page
-app.engine('handlebars', exphbs({ defaultLayout: 'main2' }));
+// app.engine('handlebars', exphbs({ defaultLayout: 'main2' }));
 app.set('view engine', 'handlebars');
-
+app.use(routes);
 // need session to keep track of user's login status
 // app.use(session({ secret: '???', resave: true, saveUninitialized: true }));
 // app.use(passport.initialize());
 // app.use(passport.session());
-
-// require routes
-// require('./routes/api-route-login')(app);
-// require('./routes/html-route-login')(app);
-
-app.use(require('./routes/ui'));
 
 app.listen(PORT, () => console.log('Visit https://localhost:3000 in your broswer.'));
