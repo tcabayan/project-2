@@ -21,4 +21,4 @@ app.set('view engine', 'handlebars');
 app.use(require('./routes/html'));
 app.use('/api', require('./routes/api'));
 
-app.listen(PORT, () => console.log('Visit https://localhost:3000 in your broswer.'));
+app.listen(PORT, () => console.log('Visit http://localhost:3000 in your browser.'));
