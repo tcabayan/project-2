@@ -1,4 +1,4 @@
-import 'bootstrap';
-import 'bootstrap/js/dist/util';
-import 'bootstrap/js/dist/dropdown';
-import './main.scss';
+require('bootstrap');
+// require('bootstrap/js/dist/util');
+// require('bootstrap/js/dist/dropdown');
+require('main.scss');
