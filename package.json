@@ -4,10 +4,14 @@
   "description": "Full Stack Flex Project 2",
   "main": "server.js",
   "scripts": {
-    "lint": "eslint --ext .js .",
+    "lint": "eslint --ignore-path .gitignore --ext .js .",
+    "fix": "eslint --ignore-path .gitignore --ext .js --fix .",
     "start": "node server.js",
     "test": "npm run lint",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "heroku-postbuild": "webpack --mode production",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch"
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,9 @@
   },
   "homepage": "https://github.com/icn2you/fsf-p02#readme",
   "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "bootstrap": "^4.5.0",
+    "css-loader": "^3.5.3",
     "eslint": "^7.0.0",
     "eslint-config-semistandard": "^15.0.0",
     "eslint-config-standard": "^14.1.1",
@@ -27,16 +34,26 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "nodemon": "^2.0.4"
+    "exports-loader": "^0.7.0",
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
+    "fontawesome": "^5.6.3",
+    "jquery": "^3.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.1.0",
     "passport-github": "^1.1.0",
+    "popper.js": "^1.16.1",
     "rss-parser": "^3.8.0",
     "sequelize": "^5.21.10",
     "sequelize-cli": "^5.5.1",
