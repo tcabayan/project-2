@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const exphbs = require('express-handlebars');
 const morgan = require('morgan');
-const routes = require('./routes');
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -17,13 +16,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-// code below is to render the rss-parser podcasts page
-// app.engine('handlebars', exphbs({ defaultLayout: 'main2' }));
 app.set('view engine', 'handlebars');
-app.use(routes);
-// need session to keep track of user's login status
-// app.use(session({ secret: '???', resave: true, saveUninitialized: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+
+app.use(require('./routes/html'));
+app.use('/api', require('./routes/api'));
 
 app.listen(PORT, () => console.log('Visit https://localhost:3000 in your broswer.'));
