@@ -4,7 +4,8 @@
   "description": "Full Stack Flex Project 2",
   "main": "server.js",
   "scripts": {
-    "lint": "eslint --ext .js .",
+    "lint": "eslint --ignore-path .gitignore --ext .js .",
+    "fix": "eslint --ignore-path .gitignore --ext .js --fix .",
     "start": "node server.js",
     "test": "npm run lint",
     "watch": "nodemon server.js",
