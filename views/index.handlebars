@@ -15,6 +15,7 @@
                     <button class="btn btn-outline-success" type="button" id="addPodcast">Add</button>
                 </div>
             </div>
+            
         </div>
     </div>
     <div class="row">
@@ -25,6 +26,11 @@
   <div class="card-body" style="height: 40vh">
     <h5 class="card-title">{{title}}</h5>
     <p class="card-text" style="max-height: 50%;overflow:scroll">{{contentSnippet}}</p>
+    <div class="col-sm-4 col-sm-offset-4 embed-responsive">
+                <audio controls>
+  <source src="{{link}}" type="audio/mp3">
+    </audio>
+    </div>
     <a href="{{link}}" target="_blank" class="btn btn-primary" style="position: absolute;bottom:3%">{{pubDate}}</a> 
   </div>
 </div>
