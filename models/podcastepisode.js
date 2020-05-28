@@ -6,7 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   const PodcastEpisode = sequelize.define('PodcastEpisode', {
     name: DataTypes.STRING,
     publishDate: DataTypes.DATE,
-    audioUrl: DataTypes.STRING
+    audioUrl: DataTypes.STRING,
+    feedGuid: {
+      type: DataTypes.STRING,
+      unique: true
+    }
   }, {});
 
   PodcastEpisode.associate = function (models) {
