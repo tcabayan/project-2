@@ -22,8 +22,12 @@ const refreshPodcast = async (podcast) => {
   console.log(`Adding RSS feed: ${podcast.rssUrl}`);
 
   // update the podcast based on the parsed feed
-  podcast.author = feed.itunes.author;
   podcast.name = feed.title;
+  podcast.author = feed.itunes.author;
+  podcast.description = feed.description;
+  podcast.copyright = feed.copyright;
+  podcast.link = feed.link;
+  podcast.imageUrl = feed.itunes.image;
 
   // save the updates to the DB
   podcast = await podcast.save();

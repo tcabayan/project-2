@@ -22,7 +22,15 @@
         {{#each episodes}}
         <div class="col-3" style="padding:1vw">
             <div class="card">
+                {{#if imageUrl}}
                 <img src="{{imageUrl}}" class="card-img-top" alt="itunes cover img">
+                {{else}}
+                {{#if Podcast.imageUrl}}
+                <img src="{{Podcast.imageUrl}}" class="card-img-top" alt="iTunes Cover Image">
+                {{else}}
+                <img src="/assets/images/listen-hear.png" class="card-img-top" alt="Listen, Hear Logo">
+                {{/if}}
+                {{/if}}
                 <div class="card-body" style="height: 40vh">
                     <h5 class="card-title">{{name}}</h5>
                     <p class="card-text" style="max-height: 50%;overflow:scroll">{{description}}</p>
