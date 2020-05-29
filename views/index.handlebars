@@ -32,8 +32,9 @@
                 {{/if}}
                 {{/if}}
                 <div class="card-body" style="height: 40vh">
-                    <h5 class="card-title">{{name}}</h5>
-                    <p class="card-text" style="max-height: 50%;overflow:scroll">{{description}}</p>
+                    <h5>{{Podcast.name}}</h5>
+                    <h6 class="card-title">{{name}}</h6>
+                    <p class="card-text" style="max-height: 50%;overflow:scroll">{{{description}}}</p>
                     <div class="col-sm-4 col-sm-offset-4 embed-responsive">
                         <audio controls>
                             <source src="{{audioUrl}}" type="audio/mp3">

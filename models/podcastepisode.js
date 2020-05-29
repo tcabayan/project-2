@@ -2,6 +2,8 @@
 
 'use strict';
 
+const sanitizeHtml = require('sanitize-html');
+
 module.exports = (sequelize, DataTypes) => {
   const PodcastEpisode = sequelize.define('PodcastEpisode', {
     name: DataTypes.STRING,
@@ -23,5 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     this.hasMany(models.PodcastEpisodeUserData);
   };
 
+  PodcastEpisode.addHook('afterValidate', (data, options) => {
+    data.description = sanitizeHtml(data.description);
+  });
   return PodcastEpisode;
 };
