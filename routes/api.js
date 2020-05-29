@@ -5,6 +5,12 @@ const Parser = require('rss-parser');
 const parser = new Parser();
 const Sequelize = require('sequelize');
 
+router.get('/podcasts', async (req, res) => {
+  const podcasts = await db.Podcast.findAll();
+
+  res.json(podcasts);
+});
+
 /*
  * refreshPodcast takes in a Podcast model from the db,
  * and parses the latest data from the rssUrl, updating the
@@ -16,8 +22,12 @@ const refreshPodcast = async (podcast) => {
   console.log(`Adding RSS feed: ${podcast.rssUrl}`);
 
   // update the podcast based on the parsed feed
-  podcast.author = feed.itunes.author;
   podcast.name = feed.title;
+  podcast.author = feed.itunes.author;
+  podcast.description = feed.description;
+  podcast.copyright = feed.copyright;
+  podcast.link = feed.link;
+  podcast.imageUrl = feed.itunes.image;
 
   // save the updates to the DB
   podcast = await podcast.save();
@@ -30,8 +40,13 @@ const refreshPodcast = async (podcast) => {
   return Promise.all(feed.items.map(item => {
     return podcast.createPodcastEpisode({
       name: item.title,
-      publishDate: item.pubDate,
+      author: item.author,
+      description: item.itunes.summary,
+      duration: item.itunes.duration,
+      publishDate: item.isoDate,
       audioUrl: item.enclosure.url,
+      imageUrl: item.itunes.image,
+      link: item.link,
       feedGuid: item.guid
     });
   }));
@@ -59,6 +74,7 @@ router.get('/podcast/:id/refresh', async (req, res) => {
     if (!(e instanceof Sequelize.UniqueConstraintError)) {
       res.status(500);
     }
+    console.log(e);
   }
   res.end();
 });
