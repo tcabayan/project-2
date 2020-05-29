@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: Sequelize.UUIDV4,
       allowNull: false,
       primaryKey: true
-    }
+    },
+    githubId: DataTypes.BIGINT,
+    username: DataTypes.STRING
   }, {});
 
   User.associate = function (models) {
