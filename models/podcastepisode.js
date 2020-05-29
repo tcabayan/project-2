@@ -28,6 +28,5 @@ module.exports = (sequelize, DataTypes) => {
   PodcastEpisode.addHook('afterValidate', (data, options) => {
     data.description = sanitizeHtml(data.description);
   });
-  
   return PodcastEpisode;
 };
