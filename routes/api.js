@@ -19,7 +19,9 @@ router.get('/podcasts', async (req, res) => {
 const refreshPodcast = async (podcast) => {
   // parse the rssUrl in the podcast record
   const feed = await parser.parseURL(podcast.rssUrl);
-  console.log(`Adding RSS feed: ${podcast.rssUrl}`);
+
+  // DEBUG:
+  // console.log(`Adding RSS feed: ${podcast.rssUrl}`);
 
   // update the podcast based on the parsed feed
   podcast.name = feed.title;
@@ -56,6 +58,8 @@ router.post('/podcast', async (req, res) => {
   try {
     const podcast = db.Podcast.build({ rssUrl: req.body.rssUrl });
     await refreshPodcast(podcast);
+
+    res.json(podcast);
   } catch (e) {
     // FIXME: this is a silly way to handle uniqueness/updates
     if (!(e instanceof Sequelize.UniqueConstraintError)) {

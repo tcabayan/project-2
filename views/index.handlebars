@@ -1,23 +1,16 @@
 <div class="container my-5">
+    {{#if user}}
     <div class="row">
-        <div class="col">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-        </div>
-    </div>
-    <div class="row mt-5">
         <div class="col-md-6 offset-md-3">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Podcast Name" aria-label="Podcast Name" id="podcastName">
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="button" id="addPodcast">Add</button>
                 </div>
-            </div>
-            
+            </div>          
         </div>
     </div>
+    {{/if}}
     <div class="row">
         {{#each episodes}}
         <div class="col-3" style="padding:1vw">
