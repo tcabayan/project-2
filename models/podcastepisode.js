@@ -5,8 +5,13 @@
 module.exports = (sequelize, DataTypes) => {
   const PodcastEpisode = sequelize.define('PodcastEpisode', {
     name: DataTypes.STRING,
+    author: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    duration: DataTypes.STRING,
     publishDate: DataTypes.DATE,
     audioUrl: DataTypes.STRING,
+    imageUrl: DataTypes.STRING,
+    link: DataTypes.STRING,
     feedGuid: {
       type: DataTypes.STRING,
       unique: true
@@ -20,5 +25,3 @@ module.exports = (sequelize, DataTypes) => {
 
   return PodcastEpisode;
 };
-
-// db.PodcastEpisode.create({name: 'test', Podcast: <podcast>})
