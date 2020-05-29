@@ -9,7 +9,7 @@ $(() => {
     $('#podcastName').val('');
 
     // DEBUG:
-    console.log(`podcastSearchTerm = ${podcastSearchTerm}`);
+    // console.log(`podcastSearchTerm = ${podcastSearchTerm}`);
 
     $.ajax({
       url: 'https://itunes.apple.com/search',
@@ -24,10 +24,12 @@ $(() => {
       const result = response.results;
 
       // DEBUG:
-      console.log(result[0].feedUrl);
+      // console.log(result[0].feedUrl);
 
       $.post('/api/podcast', { rssUrl: result[0].feedUrl }, async (response) => {
-        console.log(`response = ${response}`);
+        console.log(`response = ${JSON.stringify(response)}`);
+
+        location.reload();
       });
     });
   });
