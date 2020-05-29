@@ -13,6 +13,7 @@ const Sequelize = require('sequelize');
 const refreshPodcast = async (podcast) => {
   // parse the rssUrl in the podcast record
   const feed = await parser.parseURL(podcast.rssUrl);
+  console.log(`Adding RSS feed: ${podcast.rssUrl}`);
 
   // update the podcast based on the parsed feed
   podcast.author = feed.itunes.author;
