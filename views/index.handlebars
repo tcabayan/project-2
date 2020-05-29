@@ -19,23 +19,22 @@
         </div>
     </div>
     <div class="row">
-{{#each parsedFeed}}
-<div class="col-3" style="padding:1vw">
-<div class="card">
-  <img src={{itunes.image}} class="card-img-top" alt="itunes cover img">
-  <div class="card-body" style="height: 40vh">
-    <h5 class="card-title">{{title}}</h5>
-    <p class="card-text" style="max-height: 50%;overflow:scroll">{{contentSnippet}}</p>
-    <div class="col-sm-4 col-sm-offset-4 embed-responsive">
-                <audio controls>
-  <source src="{{link}}" type="audio/mp3">
-    </audio>
+        {{#each parsedFeed}}
+        <div class="col-3" style="padding:1vw">
+            <div class="card">
+            <img src={{itunes.image}} class="card-img-top" alt="itunes cover img">
+            <div class="card-body" style="height: 40vh">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text" style="max-height: 50%;overflow:scroll">{{contentSnippet}}</p>
+                <div class="col-sm-4 col-sm-offset-4 embed-responsive">
+                    <audio controls>
+                        <source src="{{link}}" type="audio/mp3">
+                    </audio>
+                </div>
+                <a href="{{link}}" target="_blank" class="btn btn-primary" style="position: absolute;bottom:3%">{{pubDate}}</a> 
+            </div>
+            </div>
+        </div>
+        {{/each}} 
     </div>
-    <a href="{{link}}" target="_blank" class="btn btn-primary" style="position: absolute;bottom:3%">{{pubDate}}</a> 
-  </div>
-</div>
-</div>
-{{/each}} 
-</div>
-
 </div>
