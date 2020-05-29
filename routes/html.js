@@ -1,23 +1,16 @@
+const db = require('../models');
 const router = require('express').Router();
 
-const Parser = require('rss-parser');
-const parser = new Parser();
-
 router.get('/', async (req, res) => {
-  const feed = await parser.parseURL('http://joeroganexp.joerogan.libsynpro.com/rss');
+  const episodes = await db.PodcastEpisode.findAll({
+    order: [['publishDate', 'DESC']],
+    limit: 24,
+    include: [db.Podcast],
+    raw: true,
+    nest: true
+  });
 
-  // res.json(feed)
-
-  const parsedFeed = feed.items.splice(0, 5).map(a => { a.pubDate = a.pubDate.split('+')[0]; return a; });
-  res.render('index', { parsedFeed: parsedFeed, user: req.user });
-
-  // console.log(feed);
-  // console.log(feed.itunes.image);
-
-  /* feed.items.forEach(item => {
-    console.log(item.title + ':' + item.link);
-    console.log(item.itunes.image);
-  }); */
+  res.render('index', { episodes: episodes, user: req.user });
 });
 
 module.exports = router;
