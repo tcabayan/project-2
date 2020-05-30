@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     duration: DataTypes.STRING,
     publishDate: DataTypes.DATE,
     audioUrl: DataTypes.STRING,
-    imageUrl: DataTypes.STRING,
+    imageUrl: DataTypes.STRING(1024),
     link: DataTypes.STRING,
     feedGuid: {
       type: DataTypes.STRING,
