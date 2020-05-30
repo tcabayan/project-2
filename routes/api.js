@@ -99,6 +99,66 @@ router.post('/podcast/:id', async (req, res) => {
   res.end();
 });
 
+router.get('/subscriptions/:user/:username', async (req, res) => {
+  const userId = req.params.user;
+  const userName = req.params.username;
+
+  try {
+    const subscriptions = await db.Podcast.findAll({
+      order: [['name', 'ASC']],
+      include: [{
+        model: db.PodcastUserData,
+        where: {
+          userId: userId,
+          subscribed: true
+        }
+      }],
+      limit: 16,
+      raw: true,
+      nest: true
+    });
+
+    console.log(`subscriptions = ${JSON.stringify(subscriptions)}`);
+
+    // res.json(subscriptions);
+    res.render('podcasts', { podcasts: subscriptions, user: userId, user: userName, subscriptions: true });
+  } catch (e) {
+    // FIXME: this is a silly way to handle uniqueness/updates
+    if (!(e instanceof Sequelize.UniqueConstraintError)) {
+      res.status(500);
+    }
+
+    console.error(e.stack);
+  }
+
+  // res.end();
+});
+
+router.get('/podcast/:id/episodes', async (req, res) => {
+  try {
+    const episodes = await db.PodcastEpisode.findAll({
+      order: [['publishDate', 'DESC']],
+      where: { podcastId: req.params.id },
+      include: [db.Podcast],
+      limit: 24,
+      raw: true,
+      nest: true
+  });
+
+  res.render('index', { episodes: episodes });
+
+  } catch (e) {
+    // FIXME: this is a silly way to handle uniqueness/updates
+    if (!(e instanceof Sequelize.UniqueConstraintError)) {
+      res.status(500);
+    }
+
+    console.error(e.stack);
+  }
+
+  // res.end();
+});
+
 router.get('/podcast/:id/refresh', async (req, res) => {
   try {
     const podcast = await db.Podcast.findOne({ where: { id: req.params.id } });

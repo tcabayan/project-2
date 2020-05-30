@@ -17,9 +17,13 @@
         <a href="#"><img src="/assets/images/listenhearlogo.png" class="mx-auto logo" alt=""></a>
         {{#if user}}
         <p class="username">Hello, {{user.dataValues.username}}!</p>
-        <a class="btn btn-failure" href="/auth/logout">Log Out</a>
+        <div class="pr-2">
+            <a class="btn btn-danger" href="/auth/logout" role="button">Log Out</a>
+        </div>
         {{else}}
-        <a class="btn gitbtn btn-success" href="/auth/github">Sign In with Github</a>
+        <div class="pr-2">
+            <a class="btn btn-success" href="/auth/github">Sign In with Github</a>
+        </div>
         {{/if}}
     </nav>
     {{{ body }}}

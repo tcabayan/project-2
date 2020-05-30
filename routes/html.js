@@ -57,6 +57,12 @@ router.get('/', async (req, res) => {
       nest: true
     });
   } else {
+    // DEBUG:
+    // console.log(`subscriptions = ${req.}`)
+
+    /*
+      Thanks to [Sahar Hadas](https://stackoverflow.com/users/2957168/shahar-hadas) for this awesome solution.
+    */
     const subQuery = db.sequelize.dialect.QueryGenerator.selectQuery(
       'PodcastUserData',
       {

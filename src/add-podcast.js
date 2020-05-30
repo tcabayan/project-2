@@ -47,6 +47,34 @@ $(() => {
     addPodcast();
   });
 
+  // Listen for the user to click on Subscriptions.
+/*   $('.subscriptions').on('click', (event) => {
+    event.preventDefault();
+
+    console.log(event.target.id);
+
+    $.post(`/api/subscriptions/${event.target.id}`, {}, async (response) => {
+      // DEBUG:
+      console.log(`response = ${JSON.stringify(response)}`);
+
+/*         if (response.subscribed) {
+          // $(`[data-podcast-id="${podId}"]`).empty().addClass('text-muted').append('Subscribed');
+          $(this).removeClass('btn-outline-dark').addClass(['btn-outline-light', 'text-dark']).attr({ disabled: true }).text('Subscribed');
+        }
+*/
+      // location.reload();
+    //});
+  //}); 
+
+/*   $(document).on('click', '.listen', function (event) {
+    event.preventDefault();
+
+    const podId = event.target.id;
+
+    $.post()
+
+  }); */
+
   // Listen for a Subscribe button to be clicked.
   $(document).on('click', '.subscribe', function (event) {
     event.preventDefault();

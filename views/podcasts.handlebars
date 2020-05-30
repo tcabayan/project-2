@@ -7,7 +7,10 @@
                 <div class="input-group-append">
                     <button class="btn btn-success border-dark" type="button" id="addPodcast">Add</button>
                 </div>
-            </div>          
+            </div>     
+        </div>
+        <div class="col-md-2 offset-md-1 ml-2">
+            <a class="btn btn-info border-dark subscriptions" type="button" id="{{id}}" href="/api/subscriptions/{{user.dataValues.id}}/{{user.dataValues.username}}">Subscriptions</a>
         </div>
     </div>
     {{/if}}
@@ -27,12 +30,14 @@
                     <p class="card-text">{{{description}}}</p>
                 </div>
                 {{#if ../user}}
-                <div class="card-footer border-dark text-center" data-podcast-id="{{id}}">
-                    <button id="{{id}}" class="btn btn-sm btn-outline-dark subscribe" data-user-id="{{../user.dataValues.id}}">Subscribe</button>
-                </div>
+                    {{#unless subscriptions}}
+                        <div class="card-footer border-dark text-center" data-podcast-id="{{id}}">
+                            <button id="{{id}}" class="btn btn-sm btn-outline-dark subscribe" data-user-id="{{../user.dataValues.id}}">Subscribe</button>
+                        </div>
+                    {{/unless}}
                 {{else}}
                 <div class="card-footer border-dark text-center">
-                    <button id="{{id}}" class="btn btn-outline-dark listen" type="button">Listen</button>
+                    <a id="{{id}}" class="btn btn-outline-dark listen" type="button" href="/api/podcast/{{id}}/episodes">Listen</a>
                 </div>
                 {{/if}}
             </div>
