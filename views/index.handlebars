@@ -13,7 +13,7 @@
     {{/if}}
     <div class="row justify-content-around">
         {{#each episodes}}
-        <div class="col-4 all-cards">
+        <div class="col-lg-4 col-md-9 col-xs-12 all-cards">
             <div class="card">
                 {{#if imageUrl}}
                 <img src="{{imageUrl}}" class="card-img-top" alt="itunes cover img">
@@ -21,7 +21,9 @@
                 {{#if Podcast.imageUrl}}
                 <img src="{{Podcast.imageUrl}}" class="card-img-top" alt="iTunes Cover Image">
                 {{else}}
-                <img src="/assets/images/listen-hear.png" class="card-img-top" alt="Listen, Hear Logo">
+                <div class="image-container">
+                    <img src="/assets/images/listen-hear.png" class="card-img-top" alt="Listen, Hear Logo">
+                </div>
                 {{/if}}
                 {{/if}}
                 <div class="card-body">

@@ -14,9 +14,9 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a href="#"><img src="/assets/images/listen-hear.png" class="mx-auto logo" alt=""></a>
+        <a href="#"><img src="/assets/images/listenhearlogo.png" class="mx-auto logo" alt=""></a>
         {{#if user}}
-        <p>Hello, {{user.dataValues.username}}!</p>
+        <p class="username">Hello, {{user.dataValues.username}}!</p>
         <a class="btn btn-failure" href="/auth/logout">Log Out</a>
         {{else}}
         <a class="btn gitbtn btn-success" href="/auth/github">Sign In with Github</a>
