@@ -63,6 +63,8 @@ router.post('/podcast', async (req, res) => {
   } catch (e) {
     // FIXME: this is a silly way to handle uniqueness/updates
     if (!(e instanceof Sequelize.UniqueConstraintError)) {
+      console.error(e.stack);
+
       res.status(500);
     }
   }

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     copyright: DataTypes.STRING,
     link: DataTypes.STRING,
-    imageUrl: DataTypes.STRING,
+    imageUrl: DataTypes.STRING(1024),
     rssUrl: {
       type: DataTypes.STRING,
       unique: true
