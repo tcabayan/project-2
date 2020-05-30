@@ -4,7 +4,15 @@
 
 module.exports = (sequelize, DataTypes) => {
   const PodcastUserData = sequelize.define('PodcastUserData', {
-    subscribed: DataTypes.BOOLEAN
+    subscribed: DataTypes.BOOLEAN,
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false
+    },
+    podcastId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {});
 
   PodcastUserData.associate = function (models) {

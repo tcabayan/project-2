@@ -2,7 +2,8 @@ const db = require('../models');
 const passport = require('passport');
 
 passport.serializeUser((user, cb) => {
-  console.log(user);
+  // DEBUG:
+  // console.log(`user = ${user}`);
 
   cb(null, user.id);
 });
