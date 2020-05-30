@@ -10,7 +10,7 @@
             </div>     
         </div>
         <div class="col-md-2 offset-md-1 ml-2">
-            <a class="btn btn-info border-dark subscriptions" type="button" id="{{id}}" href="/api/subscriptions/{{user.dataValues.id}}/{{user.dataValues.username}}">Subscriptions</a>
+            <a class="btn btn-info border-dark subscriptions" type="button" id="{{id}}" href="/subscriptions">Subscriptions</a>
         </div>
     </div>
     {{/if}}
@@ -29,15 +29,13 @@
                     <h6 class="card-title">{{name}}</h6>
                     <p class="card-text">{{{description}}}</p>
                 </div>
-                {{#if ../user}}
-                    {{#unless subscriptions}}
-                        <div class="card-footer border-dark text-center" data-podcast-id="{{id}}">
-                            <button id="{{id}}" class="btn btn-sm btn-outline-dark subscribe" data-user-id="{{../user.dataValues.id}}">Subscribe</button>
-                        </div>
-                    {{/unless}}
-                {{else}}
+                {{#if ../listen}}
                 <div class="card-footer border-dark text-center">
-                    <a id="{{id}}" class="btn btn-outline-dark listen" type="button" href="/api/podcast/{{id}}/episodes">Listen</a>
+                    <a id="{{id}}" class="btn btn-outline-dark listen" type="button" href="/podcast/{{id}}">Listen</a>
+                </div>
+                {{else}}
+                <div class="card-footer border-dark text-center" data-podcast-id="{{id}}">
+                    <button id="{{id}}" class="btn btn-sm btn-outline-dark subscribe">Subscribe</button>
                 </div>
                 {{/if}}
             </div>

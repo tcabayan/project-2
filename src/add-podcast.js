@@ -1,7 +1,9 @@
 const $ = require('jquery');
 
 $(() => {
-  function addPodcast () {
+  function addPodcast (event) {
+    event.preventDefault();
+
     const podcastSearchTerm = $('#podcastName').val().trim();
 
     $('#podcastName').val('');
@@ -34,18 +36,10 @@ $(() => {
   }
 
   // Listen for the Add (podcast) button to be clicked.
-  $('#addPodcast').on('click', (event) => {
-    event.preventDefault();
-
-    addPodcast();
-  });
+  $('#addPodcast').on('click', addPodcast);
 
   // Listen for the Add (podcast) text input to change.
-  $('#podcastName').on('change', (event) => {
-    event.preventDefault();
-
-    addPodcast();
-  });
+  $('#podcastName').on('change', addPodcast);
 
   // Listen for the user to click on Subscriptions.
 /*   $('.subscriptions').on('click', (event) => {
@@ -80,13 +74,12 @@ $(() => {
     event.preventDefault();
 
     const podId = event.target.id;
-    const userId = $(this).data('user-id');
 
     // DEBUG:
     // console.log(`User ${userId} subscribed to Podcast ${podId}!`);
 
     $.post(`/api/podcast/${podId}`,
-      { userId: userId, podcastId: podId, subscribe: true },
+      { podcastId: podId, subscribe: true },
       async (response) => {
         // DEBUG:
         // console.log(`response = ${JSON.stringify(response.subscribed)}`);

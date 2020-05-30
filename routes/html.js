@@ -89,7 +89,55 @@ router.get('/', async (req, res) => {
     });
   }
 
-  res.render('podcasts', { podcasts: podcasts, user: req.user });
+  res.render('podcasts', { podcasts: podcasts, user: req.user, listen: !req.isAuthenticated() });
+});
+
+router.get('/subscriptions', async (req, res) => {
+  if (!req.isAuthenticated()) {
+    res.redirect('/');
+  }
+
+  try {
+    const subscriptions = await db.Podcast.findAll({
+      order: [['name', 'ASC']],
+      include: [{
+        model: db.PodcastUserData,
+        where: {
+          userId: req.user.id,
+          subscribed: true
+        }
+      }],
+      limit: 16,
+      raw: true,
+      nest: true
+    });
+
+    console.log(`subscriptions = ${JSON.stringify(subscriptions)}`);
+
+    // res.json(subscriptions);
+    res.render('podcasts', { podcasts: subscriptions, subscriptions: true, user: req.user, listen: true });
+  } catch (e) {
+    console.error(e.stack);
+    res.status(500).end();
+  }
+});
+
+router.get('/podcast/:id', async (req, res) => {
+  try {
+    const episodes = await db.PodcastEpisode.findAll({
+      order: [['publishDate', 'DESC']],
+      where: { podcastId: req.params.id },
+      include: [db.Podcast],
+      limit: 24,
+      raw: true,
+      nest: true
+    });
+
+    res.render('index', { episodes, user: req.user });
+  } catch (e) {
+    console.error(e.stack);
+    res.status(500).end();
+  }
 });
 
 module.exports = router;
