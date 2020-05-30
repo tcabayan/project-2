@@ -12,6 +12,7 @@ passport.use(new GitHubStrategy({
   clientID: CLIENT_ID,
   clientSecret: CLIENT_SECRET,
   callbackURL: CALLBACK_URL
+
 }, async (accessToken, refreshToken, profile, cb) => {
   const githubId = profile.id;
   const username = profile.username;
