@@ -45,14 +45,13 @@ $(() => {
   $(document).on('click', '.subscribe', function (event) {
     event.preventDefault();
 
-    const podId = event.target.id;
+    const podId = $(this).attr('data-podId');
 
     // DEBUG:
     // console.log(`User ${userId} subscribed to Podcast ${podId}!`);
 
-    $.post(`/api/podcast/${podId}`,
-      { podcastId: podId, subscribe: true },
-      async (response) => {
+    $.post(`/api/podcast/${podId}`, { podcastId: podId, subscribe: true })
+      .then(async (response) => {
         // DEBUG:
         // console.log(`response = ${JSON.stringify(response.subscribed)}`);
 

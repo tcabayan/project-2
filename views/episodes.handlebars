@@ -1,39 +1,34 @@
-<div class="container my-5">
-    {{#if user}}
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Podcast Name" aria-label="Podcast Name" id="podcastName">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-success" type="button" id="addPodcast">Add</button>
-                </div>
-            </div>          
+<div class="container my-5"> 
+    <div class="row justify-content-center">
+        <div class="col-md-2 offset-md-1">
+            <a class="btn btn-info border-dark subscriptions" type="button" id="refresh" data-podId="{{podcast.id}}" href="#">Refresh</a>
         </div>
     </div>
-    {{/if}}
-    <div class="row">
+    <div class="row justify-content-around">
         {{#each episodes}}
-        <div class="col-3" style="padding:1vw">
-            <div class="card">
+        <div class="col-lg-4 col-md-9 col-xs-12 all-cards">
+            <div class="card border-dark">
                 {{#if imageUrl}}
-                <img src="{{imageUrl}}" class="card-img-top" alt="itunes cover img">
+                <img src="{{imageUrl}}" class="card-img-top" alt="episode image">
                 {{else}}
                 {{#if Podcast.imageUrl}}
-                <img src="{{Podcast.imageUrl}}" class="card-img-top" alt="iTunes Cover Image">
+                <img src="{{Podcast.imageUrl}}" class="card-img-top" alt="podcast image">
                 {{else}}
-                <img src="/assets/images/listen-hear.png" class="card-img-top" alt="Listen, Hear Logo">
+                <div class="image-container">
+                    <img src="/assets/images/listen-hear.png" class="card-img-top" alt="Listen, Hear Logo">
+                </div>
                 {{/if}}
                 {{/if}}
-                <div class="card-body" style="height: 40vh">
-                    <h5>{{Podcast.name}}</h5>
-                    <h6 class="card-title">{{name}}</h6>
-                    <p class="card-text" style="max-height: 50%;overflow:scroll">{{{description}}}</p>
-                    <div class="col-sm-4 col-sm-offset-4 embed-responsive">
-                        <audio controls>
-                            <source src="{{audioUrl}}" type="audio/mp3">
-                        </audio>
-                    </div>
-                    <a href="{{link}}" target="_blank" class="btn btn-primary" style="position: absolute;bottom:3%">{{publishDate}}</a>
+                <div class="card-body">
+                    <h5><a href="{{Podcast.link}}">{{Podcast.name}}</a></h5>
+                    <h6 class="card-title"><a href="{{link}}" target="_blank">{{name}}</a></h6>
+                    <h6>{{publishDate}}</h6>
+                    <p class="card-text c-description">{{{description}}}</p>
+                </div>
+                <div class="card-footer border-dark text-center">
+                    <audio controls class="mini-player">
+                        <source src="{{audioUrl}}" type="audio/mp3">
+                    </audio>
                 </div>
             </div>
         </div>
