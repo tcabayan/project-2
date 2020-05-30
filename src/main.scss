@@ -68,3 +68,61 @@ footer small {
 	color:#fff;
 }
 
+.all-cards {
+    padding: 1vh;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.card {
+    height: 100%;
+    width: 100%;
+
+    .card-img-top {
+        width: 100%;
+        height: 40%;
+    }
+}
+
+.card-container {
+    object-fit: cover;
+}
+
+.embed-responsive {
+    display: flex;
+    width: 100%;
+}
+
+.c-description {
+    min-height: 200px;
+    max-height: 200px;
+    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.btn-secondary {
+    display: flex;
+    position: relative;
+}
+
+.mini-player {
+    width: 100%;
+    position: relative;
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+
+.card-title {
+    margin-bottom: 7%;
+}
+
+.btn-failure {
+    color: white;
+    font-weight: bold;
+}
+
+.username {
+    color: white;
+    font-weight: bold;
+}
