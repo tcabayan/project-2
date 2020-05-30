@@ -42,7 +42,7 @@ $(() => {
   $('#podcastName').on('change', addPodcast);
 
   // Listen for the user to click on Subscriptions.
-/*   $('.subscriptions').on('click', (event) => {
+  /*   $('.subscriptions').on('click', (event) => {
     event.preventDefault();
 
     console.log(event.target.id);
@@ -56,11 +56,11 @@ $(() => {
           $(this).removeClass('btn-outline-dark').addClass(['btn-outline-light', 'text-dark']).attr({ disabled: true }).text('Subscribed');
         }
 */
-      // location.reload();
-    //});
-  //}); 
+  // location.reload();
+  // });
+  // });
 
-/*   $(document).on('click', '.listen', function (event) {
+  /*   $(document).on('click', '.listen', function (event) {
     event.preventDefault();
 
     const podId = event.target.id;
