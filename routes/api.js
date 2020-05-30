@@ -57,31 +57,62 @@ const refreshPodcast = async (podcast) => {
 router.post('/podcast', async (req, res) => {
   try {
     const podcast = db.Podcast.build({ rssUrl: req.body.rssUrl });
+
     await refreshPodcast(podcast);
 
     res.json(podcast);
   } catch (e) {
     // FIXME: this is a silly way to handle uniqueness/updates
     if (!(e instanceof Sequelize.UniqueConstraintError)) {
-      console.error(e.stack);
-
       res.status(500);
     }
+
+    console.error(e.stack);
   }
+
+  res.end();
+});
+
+router.post('/podcast/:id', async (req, res) => {
+  try {
+    const subscribed = JSON.parse(req.body.subscribe);
+    const userId = req.body.userId;
+    const podcastId = parseInt(req.body.podcastId);
+
+    const [podcastUserData] = await db.PodcastUserData.findOrCreate({
+      where: { podcastId },
+      defaults: { subscribed, userId }
+    });
+
+    if (podcastUserData) {
+      res.send({ subscribed: true });
+    }
+  } catch (e) {
+    // FIXME: this is a silly way to handle uniqueness/updates
+    if (!(e instanceof Sequelize.UniqueConstraintError)) {
+      res.status(500);
+    }
+
+    console.error(e.stack);
+  }
+
   res.end();
 });
 
 router.get('/podcast/:id/refresh', async (req, res) => {
   try {
     const podcast = await db.Podcast.findOne({ where: { id: req.params.id } });
+
     await refreshPodcast(podcast);
   } catch (e) {
     // FIXME: this is a silly way to handle uniqueness/updates
     if (!(e instanceof Sequelize.UniqueConstraintError)) {
       res.status(500);
     }
-    console.log(e);
+
+    console.error(e.stack);
   }
+
   res.end();
 });
 
