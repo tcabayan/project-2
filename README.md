@@ -18,15 +18,15 @@ We used webpack as part of our deployment strategy.  webpack is a JavaScript mod
 
 
 ### Pre-Login Page 
-will display a list of the most recent podcasts and episodes that were added by users, with a button asking you to login:
+This page will display a list of the most recent podcasts and episodes that were added by our users, with a button asking you to login with your GitHub account:
 ![Alt Text](https://i.imgur.com/roWMQFB.png)
 
 ### Authentication
-clicking the login button will take you to the authentication page and ask you to login before you can add your own podcasts
+Clicking the login button will take you to the authentication page and ask you to login before you can add your own podcasts
 ![Alt Text](https://i.imgur.com/EqHMB68.png)
 
 ### Login Page
-Once you are logged in it will show your GitHub username and will let you add your own podcasts to the page, searching the iTunes database your podcast options are plentiful
+Once you are logged in the app will show your GitHub username confirming that you are logged in, and will let you add your own podcasts to the page and play all the podcast episodes displayed, searching the iTunes database your podcast options are plentiful
 ![Alt Text](https://i.imgur.com/iHDLuXv.png)
 
 Project Management
