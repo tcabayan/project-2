@@ -11,9 +11,9 @@
         </div>
     </div>
     {{/if}}
-    <div class="row">
+    <div class="row justify-content-around">
         {{#each episodes}}
-        <div class="col-3" style="padding:1vw">
+        <div class="col-4 all-cards">
             <div class="card">
                 {{#if imageUrl}}
                 <img src="{{imageUrl}}" class="card-img-top" alt="itunes cover img">
@@ -24,16 +24,16 @@
                 <img src="/assets/images/listen-hear.png" class="card-img-top" alt="Listen, Hear Logo">
                 {{/if}}
                 {{/if}}
-                <div class="card-body" style="height: 40vh">
+                <div class="card-body">
                     <h5>{{Podcast.name}}</h5>
                     <h6 class="card-title">{{name}}</h6>
-                    <p class="card-text" style="max-height: 50%;overflow:scroll">{{{description}}}</p>
-                    <div class="col-sm-4 col-sm-offset-4 embed-responsive">
-                        <audio controls>
+                    <p class="card-text c-description">{{{description}}}</p>
+                    <div class="embed-responsive">
+                        <audio controls class="mini-player">
                             <source src="{{audioUrl}}" type="audio/mp3">
                         </audio>
                     </div>
-                    <a href="{{link}}" target="_blank" class="btn btn-primary" style="position: absolute;bottom:3%">{{publishDate}}</a>
+                    <a href="{{link}}" target="_blank" class="btn btn-secondary">{{publishDate}}</a>
                 </div>
             </div>
         </div>
