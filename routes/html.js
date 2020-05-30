@@ -1,21 +1,3 @@
-/* const db = require('../models');
-const router = require('express').Router();
-
-router.get('/', async (req, res) => {
-  const episodes = await db.PodcastEpisode.findAll({
-    order: [['publishDate', 'DESC']],
-    limit: 15,
-    include: [db.Podcast],
-    raw: true,
-    nest: true
-  });
-
-  res.render('index', { episodes: episodes, user: req.user });
-});
-
-module.exports = router;
-*/
-
 const db = require('../models');
 const router = require('express').Router();
 
@@ -24,28 +6,6 @@ router.get('/', async (req, res) => {
 
   // DEBUG:
   console.log(`user = ${JSON.stringify(user)}`);
-
-  /*   const episodes = (req.user)
-    ? await db.PodcastEpisode.findAll({
-      order: [['publishDate', 'DESC']],
-      limit: 24,
-      include: [{
-        model: db.PodcastEpisodeUserData,
-        include: [
-          { model: db.User }
-        ]
-      }],
-      where: { userId: req.user.dataValues.id },
-      raw: true,
-      nest: true
-    })
-    : await db.PodcastEpisode.findAll({
-      order: [['publishDate', 'DESC']],
-      limit: 24,
-      include: [db.Podcast],
-      raw: true,
-      nest: true
-    }); */
 
   let podcasts = null;
 
@@ -89,7 +49,7 @@ router.get('/', async (req, res) => {
     });
   }
 
-  res.render('podcasts', { podcasts: podcasts, user: req.user, listen: !req.isAuthenticated() });
+  res.render('podcasts', { podcasts: podcasts, user: req.user, subscribe: req.isAuthenticated() });
 });
 
 router.get('/subscriptions', async (req, res) => {
@@ -115,7 +75,7 @@ router.get('/subscriptions', async (req, res) => {
     console.log(`subscriptions = ${JSON.stringify(subscriptions)}`);
 
     // res.json(subscriptions);
-    res.render('podcasts', { podcasts: subscriptions, subscriptions: true, user: req.user, listen: true });
+    res.render('podcasts', { podcasts: subscriptions, subscriptions: true, user: req.user, subscribe: false });
   } catch (e) {
     console.error(e.stack);
     res.status(500).end();
@@ -133,7 +93,7 @@ router.get('/podcast/:id', async (req, res) => {
       nest: true
     });
 
-    res.render('index', { episodes, user: req.user });
+    res.render('episodes', { podcast: episodes[0].Podcast, episodes, user: req.user });
   } catch (e) {
     console.error(e.stack);
     res.status(500).end();

@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     author: DataTypes.STRING,
     description: DataTypes.TEXT,
-    copyright: DataTypes.STRING,
-    link: DataTypes.STRING,
+    copyright: DataTypes.TEXT,
+    link: DataTypes.STRING(1024),
     imageUrl: DataTypes.STRING(1024),
     rssUrl: {
       type: DataTypes.STRING,
