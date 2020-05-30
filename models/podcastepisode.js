@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     duration: DataTypes.STRING,
     publishDate: DataTypes.DATE,
-    audioUrl: DataTypes.STRING,
-    imageUrl: DataTypes.STRING,
-    link: DataTypes.STRING,
+    audioUrl: DataTypes.STRING(1024),
+    imageUrl: DataTypes.STRING(1024),
+    link: DataTypes.STRING(1024),
     feedGuid: {
       type: DataTypes.STRING,
       unique: true

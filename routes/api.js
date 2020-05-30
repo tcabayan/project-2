@@ -19,7 +19,9 @@ router.get('/podcasts', async (req, res) => {
 const refreshPodcast = async (podcast) => {
   // parse the rssUrl in the podcast record
   const feed = await parser.parseURL(podcast.rssUrl);
-  console.log(`Adding RSS feed: ${podcast.rssUrl}`);
+
+  // DEBUG:
+  // console.log(`Adding RSS feed: ${podcast.rssUrl}`);
 
   // update the podcast based on the parsed feed
   podcast.name = feed.title;
@@ -55,27 +57,56 @@ const refreshPodcast = async (podcast) => {
 router.post('/podcast', async (req, res) => {
   try {
     const podcast = db.Podcast.build({ rssUrl: req.body.rssUrl });
+
     await refreshPodcast(podcast);
+
+    res.json(podcast);
   } catch (e) {
     // FIXME: this is a silly way to handle uniqueness/updates
     if (!(e instanceof Sequelize.UniqueConstraintError)) {
       res.status(500);
     }
+
+    console.error(e.stack);
   }
+
   res.end();
+});
+
+router.post('/podcast/:id', async (req, res) => {
+  try {
+    const subscribed = JSON.parse(req.body.subscribe);
+    const userId = req.user.id;
+    const podcastId = parseInt(req.body.podcastId);
+
+    const [podcastUserData] = await db.PodcastUserData.findOrCreate({
+      where: { podcastId, userId },
+      defaults: { subscribed }
+    });
+
+    if (podcastUserData) {
+      res.send({ subscribed: true });
+    }
+  } catch (e) {
+    console.error(e.stack);
+    res.status(500).end();
+  }
 });
 
 router.get('/podcast/:id/refresh', async (req, res) => {
   try {
     const podcast = await db.Podcast.findOne({ where: { id: req.params.id } });
+
     await refreshPodcast(podcast);
   } catch (e) {
     // FIXME: this is a silly way to handle uniqueness/updates
     if (!(e instanceof Sequelize.UniqueConstraintError)) {
       res.status(500);
     }
-    console.log(e);
+
+    console.error(e.stack);
   }
+
   res.end();
 });
 

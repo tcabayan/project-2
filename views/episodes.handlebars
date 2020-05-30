@@ -1,0 +1,37 @@
+<div class="container my-5"> 
+    <div class="row justify-content-center">
+        <div class="col-md-2 offset-md-1">
+            <a class="btn btn-info border-dark subscriptions" type="button" id="refresh" data-podId="{{podcast.id}}" href="#">Refresh</a>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        {{#each episodes}}
+        <div class="col-lg-4 col-md-9 col-xs-12 all-cards">
+            <div class="card border-dark">
+                {{#if imageUrl}}
+                <img src="{{imageUrl}}" class="card-img-top" alt="episode image">
+                {{else}}
+                {{#if Podcast.imageUrl}}
+                <img src="{{Podcast.imageUrl}}" class="card-img-top" alt="podcast image">
+                {{else}}
+                <div class="image-container">
+                    <img src="/assets/images/listen-hear.png" class="card-img-top" alt="Listen, Hear Logo">
+                </div>
+                {{/if}}
+                {{/if}}
+                <div class="card-body">
+                    <h5><a href="{{Podcast.link}}">{{Podcast.name}}</a></h5>
+                    <h6 class="card-title"><a href="{{link}}" target="_blank">{{name}}</a></h6>
+                    <h6>{{publishDate}}</h6>
+                    <p class="card-text c-description">{{{description}}}</p>
+                </div>
+                <div class="card-footer border-dark text-center">
+                    <audio controls class="mini-player">
+                        <source src="{{audioUrl}}" type="audio/mp3">
+                    </audio>
+                </div>
+            </div>
+        </div>
+        {{/each}} 
+    </div>
+</div>

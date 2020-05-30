@@ -9,12 +9,13 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    return queryInterface.addColumn('PodcastEpisodes', 'feedGuid', Sequelize.STRING)
-      .then(() => queryInterface.addIndex('PodcastEpisodes', ['feedGuid']))
-      .then(() => queryInterface.addConstraint('PodcastEpisodes', ['feedGuid'], {
-        type: 'unique',
-        name: 'feedGuid_unique'
-      }));
+    return queryInterface.changeColumn(
+      'PodcastUserData',
+      'subscribed',
+      {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      });
   },
 
   down: (queryInterface, Sequelize) => {
@@ -25,6 +26,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    return queryInterface.removeColumn('PodcastEpisodes', 'feedGuid');
+    return queryInterface.changeColumn('PodcastUserData', 'subscribed', Sequelize.BOOLEAN);
   }
 };

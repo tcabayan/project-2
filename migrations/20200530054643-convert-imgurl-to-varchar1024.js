@@ -9,10 +9,10 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    return queryInterface.addConstraint('Podcasts', ['rssUrl'], {
-      type: 'unique',
-      name: 'rssUrl_unique'
-    });
+    return Promise.all([
+      queryInterface.changeColumn('Podcasts', 'imageURL', Sequelize.STRING(1024)),
+      queryInterface.changeColumn('PodcastEpisodes', 'imageURL', Sequelize.STRING(1024))
+    ]);
   },
 
   down: (queryInterface, Sequelize) => {
@@ -23,6 +23,9 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    return queryInterface.removeConstraint('Podcasts', 'rssUrl_unique');
+    return Promise.all([
+      queryInterface.changeColumn('Podcasts', 'imageURL', Sequelize.STRING),
+      queryInterface.changeColumn('PodcastEpisodes', 'imageURL', Sequelize.STRING)
+    ]);
   }
 };
